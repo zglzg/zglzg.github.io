@@ -1,2 +1,2 @@
-# 个人站点
-发布一些技术文档和使用手册！
+## Personal website hosted by github
+Publish some usage tutorials and documents！
