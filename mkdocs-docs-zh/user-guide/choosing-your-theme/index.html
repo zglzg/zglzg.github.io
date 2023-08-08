@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="lzg">
-        <link rel="canonical" href="https://zglzg.github.io/mkdocs-docs-zh/user-guide/deploying-your-docs/">
+        <link rel="canonical" href="https://zglzg.github.io/mkdocs-docs-zh/user-guide/choosing-your-theme/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>部署文档 - MkDocs中文文档</title>
+        <title>Choosing your Theme - MkDocs中文文档</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -39,7 +39,7 @@
                             <li class="navitem">
                                 <a href="../../getting-started/" class="nav-link">快速入门</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">用户指南 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -76,7 +76,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">部署文档</a>
+    <a href="../deploying-your-docs/" class="dropdown-item">部署文档</a>
 </li>
                                     
 <li>
@@ -135,16 +135,6 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../cli/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../plugins/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="https://github.com/zglzg/mkdocs-docs-zh/" class="nav-link"><i class="fa fa-github"></i> GitHub</a>
                             </li>
                     </ul>
@@ -165,21 +155,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">部署文档</a>
+            <li class="nav-item" data-level="1"><a href="#choosing-your-theme" class="nav-link">Choosing your Theme</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#github-pages" class="nav-link">GitHub Pages</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#read-the-docs" class="nav-link">Read the Docs</a>
+            <li class="nav-item" data-level="2"><a href="#mkdocs" class="nav-link">mkdocs</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">其他提供商</a>
+            <li class="nav-item" data-level="2"><a href="#readthedocs" class="nav-link">readthedocs</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#404" class="nav-link">404页面</a>
+            <li class="nav-item" data-level="2"><a href="#third-party-themes" class="nav-link">Third Party Themes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -190,59 +176,206 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">部署文档<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
-<p>将文档部署到各种托管服务提供商的基本指南</p>
+<h1 id="choosing-your-theme">Choosing your Theme<a class="headerlink" href="#choosing-your-theme" title="Permanent link"></a></h1>
+<p>Selecting and configuring a theme.</p>
 <hr />
-<h2 id="github-pages">GitHub Pages<a class="headerlink" href="#github-pages" title="Permanent link"></a></h2>
-<p>如果您在<a href="https://github.com/">GitHub</a>上托管项目的源代码，则可以轻松使用<a href="https://pages.github.com/">GitHub Pages</a>来托管项目的文档。GitHub页面有两种基本类型：<a href="https://help.github.com/articles/user-organization-and-project-pages/#project-pages-sites">Project Pages</a>站点和<a href="https://help.github.com/articles/user-organization-and-project-pages/#user-and-organization-pages-sites">User and Organization Pages</a>站点。它们几乎完全相同但有一些重要的区别，在部署时需要不同的工作流程。</p>
-<h3 id="project-pages">Project Pages<a class="headerlink" href="#project-pages" title="Permanent link"></a></h3>
-<p>项目页面站点更简单，因为站点文件被部署到项目存储库中的分支（默认情况下为“gh-pages”）。 在“checkout”git存储库的主要工作分支（通常是<code>master</code>）之后，您可以在其中维护项目的源文档，运行以下命令：</p>
-<pre><code class="language-sh">mkdocs gh-deploy
+<p>MkDocs includes two built-in themes (<a href="#mkdocs">mkdocs</a> and
+<a href="#readthedocs">readthedocs</a>), as documented below. However, many <a href="#third-party-themes">third party
+themes</a> are available to choose from as well.</p>
+<p>To choose a theme, set the <a href="../configuration/#theme">theme</a> configuration option in your <code>mkdocs.yml</code>
+config file.</p>
+<pre><code class="language-yaml">theme:
+  name: readthedocs
 </code></pre>
-<p>就是这么简单就完成了部署！ MkDocs将构建您的文档并使用<a href="https://github.com/davisp/ghp-import">ghp-import</a>工具将它们提交到<code>gh-pages</code>分支，然后将<code>gh-pages</code>分支推送到GitHub。</p>
-<p>使用<code>mkdocs gh-deploy --help</code>获取可用于<code>gh-deploy</code>命令的完整选项列表。</p>
-<p>请注意，在将其推送到GitHub之前，您将无法查看构建的站点。 因此，您可能希望通过使用<code>build</code>或<code>serve</code>命令并在本地查看构建的文件来验证您对文档所做的任何更改。</p>
-<div class="admonition warning">
-<p class="admonition-title">警告：</p>
-<p>如果使用<code>gh-deploy</code>命令，则不应手动编辑页面存储库中的文件，因为手动所作的更改在下次运行该命令的时候将丢失。 </p>
-</div>
-<h3 id="organization-and-user-pages">Organization and User Pages<a class="headerlink" href="#organization-and-user-pages" title="Permanent link"></a></h3>
-<p>User and Organization Pages站点不依赖于特定项目，站点文件部署到以“GitHub”帐户名命名的专用存储库中的“master”分支。 因此，您需要在本地系统上使用两个存储库的工作副本。 例如，请考虑以下文件结构：</p>
-<pre><code class="language-no-highlight">my-project/
-    mkdocs.yml
-    docs/
-orgname.github.io/
-</code></pre>
-<p>在制作并验证项目更新后，您需要将目录更改为<code>orgname.github.io</code>存储库并从那里调用<code>mkdocs gh-deploy</code>命令：</p>
-<pre><code class="language-sh">cd ../orgname.github.io/
-mkdocs gh-deploy --config-file ../my-project/mkdocs.yml --remote-branch master
-</code></pre>
-<p>需要注意的是，您需要显式指向<code>mkdocs.yml</code>配置文件，因为它不再位于当前工作目录中。 您还需要通知部署脚本提交到<code>master</code>分支。 您可以使用<a href="../configuration/#remote_branch">remote_branch</a>配置设置覆盖默认值，但是如果您在运行部署脚本之前忘记更改目录，它将提交到可能不是你期望的项目的<code>master</code>分支。</p>
-<p>请注意，在将其推送到GitHub之前，您将无法查看构建的站点。 因此，您可能希望通过使用<code>build</code>或<code>serve</code>命令并在本地查看构建的文件来验证您对文档所做的任何更改。</p>
-<div class="admonition warning">
-<p class="admonition-title">警告：</p>
-<p>如果使用<code>gh-deploy</code>命令，则不应手动编辑页面存储库中的文件，因为手动所作的更改在下次运行该命令的时候将丢失。 </p>
-</div>
-<h3 id="_2">自定义域名<a class="headerlink" href="#_2" title="Permanent link"></a></h3>
-<p>GitHub Pages支持为您的站点使用[自定义域名]。除了GitHub记录的步骤之外，您还需要执行一个额外的步骤，以便MkDocs可以与您的自定义域一起使用。您需要将“CNAME”文件添加到<a href="../configuration/#docs_dir">docs_dir</a>的根目录中。该文件必须在一行中包含一个裸域或子域（请参阅MkDocs自己的[CNAME文件]作为示例）。您可以手动创建文件，或使用GitHub的Web界面设置自定义域（在Settings/Custom Domain下）。如果您使用Web界面，GitHub将为您创建<code>CNAME</code>文件并将其保存到“pages”分支的根目录。因此，下次部署时不会删除该文件，您需要将文件复制到<code>docs_dir</code>。将文件正确地包含在<code>docs_dir</code>中，MkDocs将在您构建的站点中包含该文件，并在每次运行<code>gh-deploy</code>命令时将其推送到“pages”分支。</p>
-<p>如果您在使自定义域名时遇到问题，请参阅<a href="https://help.github.com/articles/troubleshooting-custom-domains/">Troubleshooting custom domains</a>的GitHub文档。</p>
-<h2 id="read-the-docs">Read the Docs<a class="headerlink" href="#read-the-docs" title="Permanent link"></a></h2>
-<p><a href="https://readthedocs.org/">Read the Docs</a>提供免费文档托管。您可以使用任何主要版本控制系统导入文档，包括Mercurial，Git，Subversion和Bazaar。Read the Docs支持MkDocs开箱即用。 按照其网站上的[说明]正确排列存储库中的文件，创建一个帐户并将其指向您公开托管的存储库。如果配置正确，每次将提交推送到公共存储库时，文档都会更新。</p>
-<div class="admonition note">
-<p class="admonition-title">注意：</p>
-<p>要从Read the Docs提供的所有<a href="https://read-the-docs.readthedocs.io/en/latest/features.html">功能</a>中受益，您需要使用MkDocs附带的<a href="../styling-your-docs/#readthedocs">Read the Docs主题</a>。 Read the Docs文档中提到的各种主题是Sphinx特定主题，不适用于MkDocs。</p>
-</div>
-<h2 id="_3">其他提供商<a class="headerlink" href="#_3" title="Permanent link"></a></h2>
-<p>任何可以提供静态文件的托管服务的提供商都可以用来部署MkDocs生成的文档。虽然不能一一提供每个服务商的部署方式，但是以下指南可以提供一些一般性的帮助。 </p>
-<p>当您构建站点时（使用<code>mkdocs build</code>命令），所有文件都将写入您的<code>mkdocs.yaml</code>配置文件中给<a href="../configuration/#site_dir">site_dir</a>选项所设置的目录中（默认为“site”）。 通常，您只需将该目录的内容复制到托管服务提供商服务器的根目录。 根据您的托管服务提供商的设置，您可能需要使用图形或命令行<a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">ftp</a>，<a href="https://en.wikipedia.org/wiki/Secure_Shell">ssh</a>或<a href="https://en.wikipedia.org/wiki/Secure_copy">scp</a>客户端来传输文件。</p>
-<p>例如，命令行中的一组典型命令可能如下所示：</p>
-<pre><code class="language-sh">mkdocs build
-scp -r ./site user@host:/path/to/server/root
-</code></pre>
-<p>当然，您需要将“user”替换为您的托管服务提供商的用户名，“host”替换为你自己的域名。 此外，您需要调整路径<code>/path/to/server/root</code>以匹配主机文件系统的配置。</p>
-<p>有关详细信息，请参阅相应服务商的说明文档。 您可能希望在其文档中搜索“ftp”或“上传站点(uploading site)”。</p>
-<h2 id="404">404页面<a class="headerlink" href="#404" title="Permanent link"></a></h2>
-<p>当MkDocs构建文档时，它将在<a href="../configuration/#site_dir">构建目录</a>中包含一个404.html文件。 部署到<a href="#github-pages">GitHub</a>时，将自动使用此文件，但仅限于自定义域名。其他Web服务器可以配置使用它，但该功能并不总是可用。 有关详细信息，请参阅所选Web服务器的文档。</p></div>
+<h2 id="mkdocs">mkdocs<a class="headerlink" href="#mkdocs" title="Permanent link"></a></h2>
+<p>The default theme, which was built as a custom <a href="https://getbootstrap.com/">Bootstrap</a> theme, supports almost
+every feature of MkDocs.</p>
+<p><img alt="mkdocs" src="../../img/mkdocs.png" /></p>
+<p>In addition to the default <a href="../configuration/#theme">theme configuration options</a>, the <code>mkdocs</code> theme
+supports the following options:</p>
+<ul>
+<li>
+<p><strong><code>highlightjs</code></strong>: Enables highlighting of source code in code blocks using
+    the <a href="https://highlightjs.org/">highlight.js</a> JavaScript library. Default: <code>True</code>.</p>
+</li>
+<li>
+<p><strong><code>hljs_style</code></strong>: The highlight.js library provides 79 different <a href="https://highlightjs.org/static/demo/">styles</a>
+    (color variations) for highlighting source code in code blocks. Set this to
+    the name of the desired style. Default: <code>github</code>.</p>
+</li>
+<li>
+<p><strong><code>hljs_languages</code></strong>: By default, highlight.js only supports 23 common
+    languages. List additional languages here to include support for them.</p>
+<p><code>yaml
+theme:
+  name: mkdocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust</code></p>
+</li>
+<li>
+<p><strong><code>analytics</code></strong>: Defines configuration options for an analytics service.
+    Currently, only Google Analytics v4 is supported via the <code>gtag</code> option.</p>
+<ul>
+<li>
+<p><strong><code>gtag</code></strong>: To enable Google Analytics, set to a Google Analytics v4
+tracking ID, which uses the <code>G-</code> format. See Google's documentation to
+<a href="https://support.google.com/analytics/answer/9304153?hl=en&amp;ref_topic=9303319">Set up Analytics for a website and/or app (GA4)</a> or to
+<a href="https://support.google.com/analytics/answer/9744165?hl=en&amp;ref_topic=9303319">Upgrade to a Google Analytics 4 property</a>.</p>
+<p><code>yaml
+theme:
+  name: mkdocs
+  analytics:
+    gtag: G-ABC123</code></p>
+<p>When set to the default (<code>null</code>) Google Analytics is disabled for the
+site.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>shortcuts</code></strong>: Defines keyboard shortcut keys.</p>
+<p><code>yaml
+theme:
+  name: mkdocs
+  shortcuts:
+    help: 191    # ?
+    next: 78     # n
+    previous: 80 # p
+    search: 83   # s</code></p>
+<p>All values must be numeric key codes. It is best to use keys that are
+available on all keyboards. You may use <a href="https://keycode.info/">https://keycode.info/</a> to determine
+the key code for a given key.</p>
+<ul>
+<li>
+<p><strong><code>help</code></strong>: Display a help modal that lists the keyboard shortcuts.
+    Default: <code>191</code> (&quest;)</p>
+</li>
+<li>
+<p><strong><code>next</code></strong>: Navigate to the "next" page. Default: <code>78</code> (n)</p>
+</li>
+<li>
+<p><strong><code>previous</code></strong>: Navigate to the "previous" page. Default: <code>80</code> (p)</p>
+</li>
+<li>
+<p><strong><code>search</code></strong>: Display the search modal. Default: <code>83</code> (s)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>navigation_depth</code></strong>: The maximum depth of the navigation tree in the
+    sidebar. Default: <code>2</code>.</p>
+</li>
+<li>
+<p><strong><code>nav_style</code></strong>: This adjusts the visual style for the top navigation bar; by
+    default, this is set to <code>primary</code> (the default), but it can also be set to
+    <code>dark</code> or <code>light</code>.</p>
+<p><code>yaml
+theme:
+  name: mkdocs
+  nav_style: dark</code></p>
+</li>
+<li>
+<p><strong><code>locale</code></strong>{ #mkdocs-locale }: The locale (language/location) used to
+    build the theme. If your locale is not yet supported, it will fall back
+    to the default.</p>
+<p>The following locales are supported by this theme:</p>
+<ul>
+<li><code>en</code>: English (default)</li>
+<li>(see the list of existing directories <code>mkdocs/themes/mkdocs/locales/*/</code>)</li>
+</ul>
+<p>See the guide on <a href="../localizing-your-theme/">localizing your theme</a> for more information.</p>
+</li>
+</ul>
+<h2 id="readthedocs">readthedocs<a class="headerlink" href="#readthedocs" title="Permanent link"></a></h2>
+<p>A clone of the default theme used by the <a href="https://readthedocs.org/">Read the Docs</a> service, which offers
+the same restricted feature set as its parent theme. Like its parent theme, only
+two levels of navigation are supported.</p>
+<p><img alt="ReadTheDocs" src="../../img/readthedocs.png" /></p>
+<p>In addition to the default <a href="../configuration/#theme">theme configuration options</a>, the <code>readthedocs</code>
+theme supports the following options:</p>
+<ul>
+<li>
+<p><strong><code>highlightjs</code></strong>: Enables highlighting of source code in code blocks using
+    the <a href="https://highlightjs.org/">highlight.js</a> JavaScript library. Default: <code>True</code>.</p>
+</li>
+<li>
+<p><strong><code>hljs_languages</code></strong>: By default, highlight.js only supports 23 common
+    languages. List additional languages here to include support for them.</p>
+<p><code>yaml
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust</code></p>
+</li>
+<li>
+<p><strong><code>analytics</code></strong>: Defines configuration options for an analytics service.</p>
+<ul>
+<li>
+<p><strong><code>gtag</code></strong>: To enable Google Analytics, set to a Google Analytics v4
+tracking ID, which uses the <code>G-</code> format. See Google's documentation to
+<a href="https://support.google.com/analytics/answer/9304153?hl=en&amp;ref_topic=9303319">Set up Analytics for a website and/or app (GA4)</a> or to
+<a href="https://support.google.com/analytics/answer/9744165?hl=en&amp;ref_topic=9303319">Upgrade to a Google Analytics 4 property</a>.</p>
+<p><code>yaml
+theme:
+  name: readthedocs
+  analytics:
+    gtag: G-ABC123</code></p>
+<p>When set to the default (<code>null</code>) Google Analytics is disabled for the</p>
+</li>
+<li>
+<p><strong><code>anonymize_ip</code></strong>: To enable anonymous IP address for Google Analytics,
+    set this to <code>True</code>. Default: <code>False</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>include_homepage_in_sidebar</code></strong>: Lists the homepage in the sidebar menu. As
+    MkDocs requires that the homepage be listed in the <code>nav</code> configuration
+    option, this setting allows the homepage to be included or excluded from
+    the sidebar. Note that the site name/logo always links to the homepage.
+    Default: <code>True</code>.</p>
+</li>
+<li>
+<p><strong><code>prev_next_buttons_location</code></strong>: One of <code>bottom</code>, <code>top</code>, <code>both</code> , or <code>none</code>.
+    Displays the “Next” and “Previous” buttons accordingly. Default: <code>bottom</code>.</p>
+</li>
+<li>
+<p><strong><code>navigation_depth</code></strong>: The maximum depth of the navigation tree in the
+    sidebar. Default: <code>4</code>.</p>
+</li>
+<li>
+<p><strong><code>collapse_navigation</code></strong>: Only include the page section headers in the
+    sidebar for the current page. Default: <code>True</code>.</p>
+</li>
+<li>
+<p><strong><code>titles_only</code></strong>: Only include page titles in the sidebar, excluding all
+    section headers for all pages. Default: <code>False</code>.</p>
+</li>
+<li>
+<p><strong><code>sticky_navigation</code></strong>: If True, causes the sidebar to scroll with the main
+    page content as you scroll the page. Default: <code>True</code>.</p>
+</li>
+<li>
+<p><strong><code>locale</code></strong>{ #readthedocs-locale }: The locale (language/location) used to
+    build the theme. If your locale is not yet supported, it will fall back
+    to the default.</p>
+<p>The following locales are supported by this theme:</p>
+<ul>
+<li><code>en</code>: English (default)</li>
+<li>(see the list of existing directories <code>mkdocs/themes/readthedocs/locales/*/</code>)</li>
+</ul>
+<p>See the guide on <a href="../localizing-your-theme/">localizing your theme</a> for more information.</p>
+</li>
+<li>
+<p><strong><code>logo</code></strong>: To set a logo on your project instead of the plain text
+    <code>site_name</code>, set this variable to be the location of your image. Default: <code>null</code>.</p>
+</li>
+</ul>
+<h2 id="third-party-themes">Third Party Themes<a class="headerlink" href="#third-party-themes" title="Permanent link"></a></h2>
+<p>A list of third party themes can be found at the <a href="https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes">community wiki</a> page and <a href="https://github.com/mkdocs/catalog#-theming">the ranked catalog</a>. If you have created your own, please add them there.</p></div>
             </div>
         </div>
 

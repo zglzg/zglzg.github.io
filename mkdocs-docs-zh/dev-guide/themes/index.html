@@ -44,11 +44,27 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
+    <a href="../../user-guide/" class="dropdown-item">用户指南</a>
+</li>
+                                    
+<li>
+    <a href="../../user-guide/installation/" class="dropdown-item">安装</a>
+</li>
+                                    
+<li>
     <a href="../../user-guide/writing-your-docs/" class="dropdown-item">编写文档</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/styling-your-docs/" class="dropdown-item">设置文档样式</a>
+    <a href="../../user-guide/styling-your-docs/" class="dropdown-item">选择文档主题</a>
+</li>
+                                    
+<li>
+    <a href="../../user-guide/custom-themes/" class="dropdown-item">自定义主题</a>
+</li>
+                                    
+<li>
+    <a href="../../user-guide/localizing-your-theme/" class="dropdown-item">本地化主题</a>
 </li>
                                     
 <li>
@@ -56,11 +72,11 @@
 </li>
                                     
 <li>
-    <a href="../../user-guide/deploying-your-docs/" class="dropdown-item">部署文档</a>
+    <a href="../../user-guide/cli/" class="dropdown-item">命令行工具</a>
 </li>
                                     
 <li>
-    <a href="../../user-guide/custom-themes/" class="dropdown-item">自定义主题</a>
+    <a href="../../user-guide/deploying-your-docs/" class="dropdown-item">部署文档</a>
 </li>
                                     
 <li>
@@ -234,7 +250,7 @@ parts of a built-in theme. For example, with the above layout and if you set
 replace the file of the same name in the <code>mkdocs</code> theme but otherwise the
 <code>mkdocs</code> theme would remain unchanged. This is useful if you want to make
 small adjustments to an existing theme.</p>
-<p>For more specific information, see <a href="../user-guide/customizing-your-theme.md#using-the-theme-custom_dir">Customizing Your Theme</a>.</p>
+<p>For more specific information, see <a href="../../user-guide/customizing-your-theme/#using-the-theme-custom_dir">Customizing Your Theme</a>.</p>
 </blockquote>
 <!-- -->
 <blockquote>
@@ -280,7 +296,7 @@ blocks, allowing users to easily override small bits and pieces of the
 templates from the theme <a href="../../user-guide/configuration/#custom_dir">custom_dir</a>. Therefore, the built-in themes are
 implemented in a <code>base.html</code> file, which <code>main.html</code> extends. Although not
 required, third party template authors are encouraged to follow a similar
-pattern and may want to define the same <a href="../user-guide/customizing-your-theme.md#overriding-template-blocks">blocks</a> as are used in the built-in
+pattern and may want to define the same <a href="../../user-guide/customizing-your-theme/#overriding-template-blocks">blocks</a> as are used in the built-in
 themes for consistency.</p>
 <h3 id="picking-up-css-and-javascript-from-the-config">Picking up CSS and JavaScript from the config<a class="headerlink" href="#picking-up-css-and-javascript-from-the-config" title="Permanent link"></a></h3>
 <p>MkDocs defines the top-level <a href="../../user-guide/configuration/#extra_css">extra_css</a> and <a href="../../user-guide/configuration/#extra_javascript">extra_javascript</a> configs. These are lists of files.</p>
@@ -936,7 +952,7 @@ you should run the following command.</p>
 <p>For a much more detailed guide, see the official Python packaging
 documentation for <a href="https://packaging.python.org/en/latest/distributing/">Packaging and Distributing Projects</a>.</p>
 <h2 id="supporting-theme-localizationtranslation">Supporting theme Localization/Translation<a class="headerlink" href="#supporting-theme-localizationtranslation" title="Permanent link"></a></h2>
-<p>While the built-in themes provide support for <a href="../user-guide/localizing-your-theme.md">localization/translation</a> of
+<p>While the built-in themes provide support for <a href="../../user-guide/localizing-your-theme/">localization/translation</a> of
 templates, custom themes and third-party themes may choose not to. Regardless,
 the <a href="#locale"><code>locale</code></a> setting of the <code>theme</code> configuration option is always
 present and is relied upon by other parts of the system. Therefore, it is
@@ -1014,7 +1030,7 @@ different process for generating those <code>mo</code> files if you chose to do 
 
         <footer class="col-md-12">
             <hr>
-                <p>Copyright &copy; 2014 <a href="https://twitter.com/_tomchristie" target="_blank">Tom Christie</a>, Maintained by the <a href="/about/release-notes/#maintenance-team" target="_blank">MkDocs Team</a>.</p>
+                <p>Copyright &copy; 2014 Tom Christie, Maintained by the MkDocs Team.</p>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script src="../../js/jquery-3.6.0.min.js"></script>
